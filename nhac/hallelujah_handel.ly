@@ -1,45 +1,13 @@
-\version "2.18.2"
+\version "2.22.1"
 
 \header {
-  title = \markup { \fontsize #3 "Hallelujah" }
-  subtitle = "(Trích Oratorio - The MESSIAH)"
-  composer = "G.F.Handel"
+  title = \markup { \fontsize #5 "Hallelujah" }
+  subsubtitle = "(Trích ORATORIO The Messiah, phần 2, đoạn 44)"
+  composer = "Nhạc: G. F. Handel"
   tagline = ##f
 }
 
-\paper {
-  #(set-paper-size "a4")
-  top-margin = 20\mm
-  bottom-margin = 20\mm
-  left-margin = 10\mm
-  right-margin = 10\mm
-  indent = #0
-  #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
-			       (/ 20 20)))
-  print-page-number = ##f
-  systems-per-page = #3
-}
-
-global = {
-  \key d \major
-  \time 4/4
-  \tempo "Allegro"
-}
-
-smallNote = #(define-music-function
-  (parser location note)
-  (ly:music?)
-  #{
-    \tweak font-size #-3
-    #note
-  #}
-)
-
-% Soprano music
-musicSoprano = \relative c {
+nhacSop = \relative c {
   %{ 01-05 %} r1 | r1 | r1 | \break
                 d''4. ^\f a8 b8 a8 r4 | d4. a8 b8 a8 r8 d16 d16 |
   %{ 06-10 %} d8 d8 r8 d16 d16 d8 d8 r8 d8 | cis8 (d4) cis8 d4 r4 | e4. a,8 fis'8 e8 r4 | e4. a,8 fis'8 e8 r8 e16 e16 |
@@ -50,11 +18,11 @@ musicSoprano = \relative c {
   %{ 16-20 %} fis8 e8 r8 e16 e16 fis8 e8 r4 | r1 | r1 | r2 r4 r8 d16 d16 | d8 d8 r8 d16 d16 d8 d8 r8 d16 d16 |
   %{ 21-25 %} d8 d8 r8 d16 d16 d8 d8 r4 |
                 <>^\markup { \fontsize #6 \box \bold B }
-                d2 e4 fis4 | g8 g,8 g'4. g8 fis4 | e2 d4 r8 d16 d16 |
-                cis8 a8 r8 cis16 cis16 d8 d16 d16 e8 e8 |
-  %{ 26-30 %} a,4 r8 d16 cis16 b8 b8 r8 e8 | d8 (cis8) d8 (e16 d16) cis8 cis16 cis16 e8 cis8 | r8 a16 a16 d8 a8 r8 cis16 cis16 e8 cis8 |
-                r8 a16 a16 fis'8 d8 r8 cis16 cis16 d8 a8 | \noBreak r8 b16 b16 e8 e8 r8 cis16 cis16 d8 d16 d16 | \break
-  %{ 31-35 %} d4 cis4 d4 d4 | d4 d4 d2 | r2 r4 a4 ^\p |
+                d2 e4 fis4 | g8 g,8 g'4. g8 fis4 | e2 d4 r8 d16 d16 | \noBreak
+                cis8 a8 r8 cis16 cis16 d8 d16 d16 e8 e8 | \break
+  %{ 26-30 %} a,4 r8 d16 cis16 b8 b8 r8 e8 | d8 (cis8) d8 (e16 d16) cis8 cis16 cis16 e8 cis8 | r8 a16 a16 d8 a8 r8 cis16 cis16 e8 cis8 | \noBreak
+                r8 a16 a16 fis'8 d8 r8 cis16 cis16 d8 a8 | \break r8 b16 b16 e8 e8 r8 cis16 cis16 d8 d16 d16 | \noBreak
+  %{ 31-35 %} d4 cis4 d4 d4 | \break d4 d4 d2 | r2 r4 a4 ^\p |
                 <>^\markup { \fontsize #6 \box \bold C }
                 a4 g4 fis4 e8. (d16) | d1 |
   %{ 36-40 %} r2 fis4 ^\mf ^\< e8. (d16) | d2. \! fis'4 ^\f | e4 d4 d4 cis4 | d4. cis8 d4 d4 | cis4. a8 b4 cis4 |
@@ -76,8 +44,7 @@ musicSoprano = \relative c {
   %{ 91-94 %} d8 d8 r8 d16 d16 d8 d8 r8 d16 d16 | d8 d8 r4 r4 d4 | d2. d4 | d1 ^\fermata \bar "|."
 }
 
-% Soprano lyrics
-lyricsSoprano = \lyrics {
+loiSop = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
@@ -89,13 +56,13 @@ lyricsSoprano = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah.
   Ngài là Thiên Chúa quyền phép thống trị muôn loài
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah.
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal -" "le -" "lu -" jah, Hal· le· lu· jah,
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  Hal· le· lu· jah, Hal· le· lu· jah,
+  Hal· le -- lu -- jah, Hal -- le -- lu -- jah.
   Chúa cả hiển vinh muôn đời.
   Chúa oai quyền, Chúa oai quyền cả trời đất là của Chúa Trời
   của Chúa Ki -- tô
@@ -123,8 +90,7 @@ lyricsSoprano = \lyrics {
   "Hal -" "le -" "lu -" jah!
 }
 
-% Alto music
-musicAlto = \relative c'' {
+nhacAlto = \relative c'' {
   %{ 01-05 %} r1 | r1 | r1 | \break
                 a4.^\f a8 g fis r4 | a4. a8 g fis r8 a16 a |
   %{ 06-10 %} b8 a r8 a16 a b8 a r8 a | g (fis e) e fis4 r | a4. a8 a a r4 | a4. a8 a a r8 a16 a | a8 a r8 a16 a a8 a r8 a |
@@ -150,8 +116,7 @@ musicAlto = \relative c'' {
   %{ 91-94 %} b8 a r8 a16 a b8 a r8 a16 a | b8 a r4 r4  fis4 | g2. g4 | fis1 -\fermata \bar "|."
 }
 
-% Alto lyrics
-lyricsAlto = \lyrics {
+loiAlto = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
@@ -163,13 +128,13 @@ lyricsAlto = \lyrics {
   Ngài là Thiên Chúa quyền phép thống trị muôn loài.
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah.
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal -" "le -" "lu -" jah, Hal· le· lu· jah,
+  Hal -- le -- lu -- jah, Hal· le· lu· jah,
+  "Hal·" "le·" "lu·" jah.
   Ngài là Thiên Chúa quyền phép thống trị muôn loài.
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah.
+  Hal· le· lu· jah, Hal -- le -- lu -- jah.
   Chúa cả hiền vinh muôn đời.
   Chúa oai quyền
   Chúa oai quyền cả trời đất là của Chúa Trời của chúa Ki -- tô.
@@ -198,9 +163,7 @@ lyricsAlto = \lyrics {
   "Hal -" "le -" "lu -" jah.
 }
 
-
-% Tenor music
-musicTenor = \relative c {
+nhacTeno = \relative c {
   %{ 01-05 %} r1 | r1 | r1 | \break
                 fis'4.^\f d8 d d r4 | fis4. d8 d d r8 d16 d |
   %{ 06-10 %} g8 fis r8 d16 d g8 fis r8 d | e( a,4) a8 a4 r | cis4. e8 d cis r4 |
@@ -226,8 +189,7 @@ musicTenor = \relative c {
   %{ 91-94 %} g8 fis r8 d16 d g8 fis r8 d16 d | g8 fis r4 r a,4 | b2. b4 | a1-\fermata \bar "|."
 }
 
-% Tenor lyrics
-lyricsTenor = \lyrics {
+loiTeno = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
@@ -240,13 +202,13 @@ lyricsTenor = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah.
+  "Hal -" "le -" "lu -" jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·" jah.
   Ngài là Thiên Chúa quyền phép thống trị muôn loài
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah.
+  Hal· le· lu· jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·" jah.
   Ngài là Thiên Chúa quyền phép thống trị muôn loài
-  "Hal -" "le -" "lu -" jah.
+  Hal· le -- lu -- jah.
   Chúa cả hiền vinh muôn đời
   Chúa oai quyền Chúa oai quyền cả trời đất là của Chúa Trời
   của Chúa Ki -- tô
@@ -278,9 +240,7 @@ lyricsTenor = \lyrics {
   "Hal -" "le -" "lu -" jah.
 }
 
-
-% Basso music
-musicBass = \relative c {
+nhacBas = \relative c {
   %{ 01-05 %} r1 | r1 | r1 | \break
                 d4.^\f fis8 g d r4 | d4. fis8 g d r8 fis16 fis |
   %{ 06-10 %} g8 d r8 fis16 fis g8 d r8 fis | e (d a') a d,4 r | a'4. cis8 d a r4 | a4. cis8 d a r8 cis16 cis |
@@ -307,8 +267,7 @@ musicBass = \relative c {
   %{ 90-94 %} g8 d r8 fis16 fis g8 d r8 fis16 fis | g8 d r4 r d4 | g2. g4 | d1-\fermata \bar "|."
 }
 
-% Basso lyrics
-lyricsBass = \lyrics {
+loiBas = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
@@ -320,13 +279,13 @@ lyricsBass = \lyrics {
   Ngài là Thiên Chúa quyền phép thống trị muôn loài
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah.
+  "Hal·" "le·" "lu·" jah.
   Ngài là Thiên Chúa quyền phép thống trị muôn loài
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah.
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·" lu -- jah,
+  Hal· le· lu· jah, Hal· le· lu· jah,
+  Hal· le· lu· jah, Hal· le· lu· jah,
+  "Hal·" "le·" "lu·" jah.
   Chúa cả hiển vinh muôn đời
   Chúa oai quyền
   Chúa oai quyền cả trời đất là của Chúa Trời
@@ -365,31 +324,54 @@ lyricsBass = \lyrics {
   "Hal -" "le -" "lu -" jah.
 }
 
-% 10. Layout
+% 10. Dàn trang
+\paper {
+  #(set-paper-size "a4")
+  top-margin = 20\mm
+  bottom-margin = 20\mm
+  left-margin = 17\mm
+  right-margin = 17\mm
+  indent = #0
+  #(define fonts
+	 (make-pango-font-tree "Liberation Serif"
+	 		       "Liberation Serif"
+			       "Liberation Serif"
+			       (/ 20 20)))
+  print-page-number = ##f
+  systems-per-page = #3
+  system-system-spacing = #'((basic-distance . 13)
+                             (minimum-distance . 12.5)
+                             (padding . 1))
+  score-system-spacing = #'((basic-distance . 13)
+                             (minimum-distance . 12.5)
+                             (padding . 1))
+}
+
+TongNhip = { \key d \major \time 4/4 \tempo "Allegro" }
+
 \score {
   \new ChoirStaff <<
     \new Staff \with { instrumentName = #"S" } <<
-      \new Voice = "Soprano" { \clef treble \global \musicSoprano }
-      \new Lyrics \lyricsto Soprano \lyricsSoprano
+      \new Voice = beSop { \clef treble \TongNhip \nhacSop }
+      \new Lyrics \lyricsto beSop \loiSop
     >>
     \new Staff \with { instrumentName = #"A" } <<
-      \new Voice = "Alto" { \clef treble \global \musicAlto }
-      \new Lyrics \lyricsto Alto \lyricsAlto
+      \new Voice = beAlto { \clef treble \TongNhip \nhacAlto }
+      \new Lyrics \lyricsto beAlto \loiAlto
     >>
     \new Staff \with { instrumentName = #"T" } <<
-      \new Voice = "Tenor" { \clef "violin_8" \global \musicTenor }
-      \new Lyrics \lyricsto Tenor \lyricsTenor
+      \new Voice = beTeno { \clef "violin_8" \TongNhip \nhacTeno }
+      \new Lyrics \lyricsto beTeno \loiTeno
     >>
     \new Staff \with { instrumentName = #"B" } <<
-      \new Voice = "Bass" { \clef bass \global \musicBass }
-      \new Lyrics \lyricsto Bass \lyricsBass
+      \new Voice = beBas { \clef bass \TongNhip \nhacBas }
+      \new Lyrics \lyricsto beBas \loiBas
     >>
   >>
   \layout {
-    %\override Staff.TimeSignature.transparent = ##t
     \override Lyrics.LyricText.font-size = #+1.5
-    %\override Lyrics.LyricSpace.minimum-distance = #1
+    \override Lyrics.LyricSpace.minimum-distance = #0.5
     \override Score.BarNumber.break-visibility = ##(#f #f #t)
-    %\override Score.SpacingSpanner.uniform-stretching = ##t
+    \override Score.SpacingSpanner.uniform-stretching = ##t
   } 
 }
