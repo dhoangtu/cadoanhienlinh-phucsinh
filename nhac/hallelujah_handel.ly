@@ -1,7 +1,7 @@
 \version "2.22.1"
 
 \header {
-  title = \markup { \fontsize #5 "Hallelujah" }
+  title = \markup { \fontsize #3 "Hallelujah" }
   subsubtitle = "(Trích ORATORIO The Messiah, phần 2, đoạn 44)"
   composer = "Nhạc: G. F. Handel"
   tagline = ##f

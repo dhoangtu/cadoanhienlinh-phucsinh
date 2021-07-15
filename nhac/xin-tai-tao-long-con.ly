@@ -1,61 +1,38 @@
 % Cài đặt chung
-\version "2.20.0"
+\version "2.22.1"
 \include "english.ly"
 
 \header {
-  title = "Xin Tái Tạo Lòng Con"
-  composer = "TV. 50"
-  arranger = " "
+  title = \markup { \fontsize #3 "Xin Tái Tạo Lòng Con" }
+  poet = "Tv. 50"
+  composer = "Lm. GB Trần Thanh Cao"
+  %arranger = " "
   tagline = ##f
 }
 
-global = {
-  \key bf \major
-  \time 2/4
-}
-
-\paper {
-  #(set-paper-size "a4")
-  top-margin = 20\mm
-  bottom-margin = 15\mm
-  left-margin = 20\mm
-  right-margin = 20\mm
-  indent = #0
-  #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
-			       (/ 20 20)))
-}
-
-inNghieng = { \override LyricText.font-shape = #'italic }
-
 % Nhạc điệp khúc
-nhacDiepKhuc = \relative c' {
-  \override Lyrics.LyricSpace.minimum-distance = #1.7
+nhacDiepKhucSop = \relative c' {
   \partial 4 d4 |
   g2 |
   f8 g ef c |
   d2 |
-  <<
-  {
-    a'8 bf f d |
-    bf'4 a8 a |
-    g2
-  }
-  {
-    f8 g d bf |
-    g'4 f8 f |
-    d2
-  }
-  >>
-  \bar "||"
+  a'8 bf f d |
+  bf'4 a8 a |
+  g2 \bar "||"
+}
+
+nhacDiepKhucBas = \relative c' {
+  \skip 4
+  \skip 2
+  \skip 2
+  \skip 2
+  f8 g d bf |
+  g'4 f8 f |
+  d2
 }
 
 % Nhạc phiên khúc
 nhacPhienKhucMot = \relative c'' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.0
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \partial 4 g4 |
   d' d8 d |
   d4 d8 bf |
@@ -63,7 +40,9 @@ nhacPhienKhucMot = \relative c'' {
   g) \tuplet 3/2 { g8 f g } |
   d4 \tuplet 3/2 { bf'8 bf g } |
   a4 \breathe \tuplet 3/2 { bf8 a bf } |
+  \autoBeamOff
   g4 \tuplet 3/2 { ef'8 \fermata ef \fermata c \fermata } |
+  \autoBeamOn
   d2 ( |
   d8) r c bf |
   c a bf a |
@@ -77,8 +56,6 @@ nhacPhienKhucMot = \relative c'' {
 }
 
 nhacPhienKhucHai = \relative c'' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.0
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \partial 4 g4 |
   d'4 d16 ef c c |
   d4 c8 bf |
@@ -96,8 +73,6 @@ nhacPhienKhucHai = \relative c'' {
 }
 
 nhacPhienKhucBa = \relative c'' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.0
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \partial 4 c8. c16 |
   c8 c bf g |
   bf4 \fermata a8. a16 |
@@ -116,7 +91,6 @@ nhacPhienKhucBa = \relative c'' {
 
 % Lời điệp khúc
 loiDiepKhuc = \lyricmode {
-  \override Lyrics.LyricText.font-series = #'bold
   Lạy Chúa, xin tái tạo lòng con
   xin tái tạo lòng con nên trong sạch.
 }
@@ -134,7 +108,6 @@ loiPhienKhucMot = \lyricmode {
 
 loiPhienKhucHai = \lyricmode {
   \set stanza = #"2."
-  \override Lyrics.LyricText.font-shape = #'italic
   Lạy Chúa xin tái tạo lòng con nên trong sạch.
   Đổi mới tinh thần cho bền vững trung kiên.
   Đừng nỡ đuổi con xa cách Thánh Nhan,
@@ -152,52 +125,154 @@ loiPhienKhucBa = \lyricmode {
 
 
 % Dàn trang
+\paper {
+  #(set-paper-size "a4")
+  top-margin = 10\mm
+  bottom-margin = 10\mm
+  left-margin = 20\mm
+  right-margin = 20\mm
+  indent = #0
+  #(define fonts
+    (make-pango-font-tree
+      "Liberation Serif"
+      "Liberation Serif"
+      "Liberation Serif"
+      (/ 20 20)))
+  page-count = #1
+  system-system-spacing = #'((basic-distance . 11)
+                             (minimum-distance . 11)
+                             (padding . 1))
+  score-system-spacing = #'((basic-distance . 11)
+                             (minimum-distance . 11)
+                             (padding . 1))
+  
+}
+
+% Thiết lập tông và nhịp
+TongNhip = { \key bf \major \time 2/4 }
+
+% Đổi kích thước nốt cho bè phụ
+notBePhu =
+#(define-music-function (font-size music) (number? ly:music?)
+   (for-some-music
+     (lambda (m)
+       (if (music-is-of-type? m 'rhythmic-event)
+           (begin
+             (set! (ly:music-property m 'tweaks)
+                   (cons `(font-size . ,font-size)
+                         (ly:music-property m 'tweaks)))
+             #t)
+           #f))
+     music)
+   music)
+
 \score {
   \new ChoirStaff <<
-    \new Staff = chorus <<
-      \new Voice = "sopranos" {
-        \voiceOne \global \stemUp \nhacDiepKhuc
+    \new Staff = diepKhuc \with {
+        \consists "Merge_rests_engraver"
+        %\magnifyStaff #(magstep +1)
+        printPartCombineTexts = ##f
       }
-    >>
-    \new Lyrics = basses
-    \context Lyrics = basses 
-      %\with \override LyricText.font-shape = #'bold
-      \lyricsto sopranos \loiDiepKhuc
+      <<
+      \new Voice \TongNhip \partCombine 
+        \nhacDiepKhucSop
+        \notBePhu -3 { \nhacDiepKhucBas }
+      \new NullVoice = nhacThamChieu \nhacDiepKhucSop
+      \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1
+        }
+        \lyricsto nhacThamChieu \loiDiepKhuc
+      >>
   >>
+  \layout {
+    \override Lyrics.LyricText.font-series = #'bold
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #5
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
 
 \score {
   \new ChoirStaff <<
-    \new Staff = verses <<
-      \override Staff.TimeSignature.transparent = ##t
-      \new Voice = "verse" {
-        \global \stemNeutral \nhacPhienKhucMot
+    \new Staff = phienKhuc \with {
+        %\magnifyStaff #(magstep +1)
+      }
+      <<
+      \new Voice = beSop {
+        \TongNhip \nhacPhienKhucMot
       }
     >>
-    \new Lyrics \lyricsto verse \loiPhienKhucMot
+    \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1
+        }
+        \lyricsto beSop \loiPhienKhucMot
   >>
+  \layout {
+    \override Staff.TimeSignature.transparent = ##t
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #2.5
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
 
 \score {
   \new ChoirStaff <<
-    \new Staff = verses <<
-      \override Staff.TimeSignature.transparent = ##t
-      \new Voice = "verse" {
-        \global \stemNeutral \nhacPhienKhucHai
+    \new Staff = phienKhuc \with {
+        %\magnifyStaff #(magstep +1)
+      }
+      <<
+      \new Voice = beSop {
+        \TongNhip \nhacPhienKhucHai
       }
     >>
-    \new Lyrics \lyricsto verse \loiPhienKhucHai
+    \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1.2
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1
+        }
+        \lyricsto beSop \loiPhienKhucHai
   >>
+  \layout {
+    \override Staff.TimeSignature.transparent = ##t
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #2.5
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
 
 \score {
   \new ChoirStaff <<
-    \new Staff = verses <<
-      \override Staff.TimeSignature.transparent = ##t
-      \new Voice = "verse" {
-        \global \stemNeutral \nhacPhienKhucBa
+    \new Staff = phienKhuc \with {
+        %\magnifyStaff #(magstep +1)
+      }
+      <<
+      \new Voice = beSop {
+        \TongNhip \nhacPhienKhucBa
       }
     >>
-    \new Lyrics \lyricsto verse \loiPhienKhucBa
+    \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1
+        }
+        \lyricsto beSop \loiPhienKhucBa
   >>
+  \layout {
+    \override Staff.TimeSignature.transparent = ##t
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #2.2
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
