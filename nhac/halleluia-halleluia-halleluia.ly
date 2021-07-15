@@ -116,5 +116,5 @@ loiDiepKhuc = \lyricmode {
     \override Score.SpacingSpanner.uniform-stretching = ##t
     \set Score.barAlways = ##t
     \set Score.defaultBarType = ""
-  } 
+  }
 }

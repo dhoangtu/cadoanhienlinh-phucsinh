@@ -3,10 +3,10 @@
 \include "english.ly"
 
 \header {
-  title = "Lạy Nữ Vương Thiên Đàng"
+  title = \markup { \fontsize #3 "Lạy Nữ Vương Thiên Đàng" }
   subtitle = "(Kinh Regina Coeli)"
-  subsubtitle = " "
-  arranger = " "
+  %subsubtitle = " "
+  %arranger = " "
   poet = "Nhạc: Labat (Cantique de la Jeunesse, Paris, 1912)"
   composer = "Lời Việt: Khổng Vĩnh Thành"
   tagline = ##f
@@ -30,6 +30,7 @@ global = {
 			       "Liberation Serif"
 			       (/ 20 20)))
   print-page-number = ##f
+  page-count = #2
 }
 
 inNghieng = { \override LyricText.font-shape = #'italic }
@@ -37,8 +38,6 @@ inNghieng = { \override LyricText.font-shape = #'italic }
 % Nhạc điệp khúc
 nhacSoloMot = \relative c' {
   \tempo "Allegretto moderato" 4 = 96
-  \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \partial 4. d8 g b |
   d2 cs8 (d) e d |
   b4 g r8 g a b |
@@ -49,8 +48,6 @@ nhacSoloMot = \relative c' {
 }
 
 nhacDiepKhucSop = \relative c' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \once \override Score.RehearsalMark.font-size = #0.1
   \mark \markup { \musicglyph #"scripts.segno" }
   \partial 4. d8 g b |
@@ -59,12 +56,12 @@ nhacDiepKhucSop = \relative c' {
   c4 \breathe e2 -> d8 c |
   b2 r8 d b g |
   e'4 \breathe e -^ d fs, |
-  g8 d' e d d2 ( |
-  d8) \breathe d e d d2 ( |
-  d4) \breathe e8. e16 d4 (c) |
-  g8 d' e d d2 ( |
-  d8) \breathe d e d d2 ( |
-  d4) \breathe e8. e16 d4 (c) |
+  g8 d' e d d2 ~ |
+  d8 \breathe d e d d2 ~ |
+  d4 \breathe e8. e16 d4 (c) |
+  g8 d' e d d2 ~ |
+  d8 \breathe d e d d2 ~ |
+  d4 \breathe e8. e16 d4 (c) |
   b4 \breathe e8. e16 d4 (fs,) |
   g2 r4 \bar "|."
   \once \override Score.RehearsalMark.font-shape = #'italic
@@ -73,7 +70,6 @@ nhacDiepKhucSop = \relative c' {
 
 nhacDiepKhucBass = \relative c' {
   \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \partial 4. d8 g b |
   b2 ^\ff as8 (b) c! b |
   g4 g r8 g8 fs g |
@@ -92,8 +88,6 @@ nhacDiepKhucBass = \relative c' {
 
 % Nhạc phiên khúc một
 nhacSoloHai = \relative c' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \partial 4 d4 |
   g b a8 c b a |
   a8. (g16) g4 r b8. b16 |
@@ -106,8 +100,6 @@ nhacSoloHai = \relative c' {
 }
 
 nhacSoloBaSop = \relative c'' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \key g \major
   \time 6/8
   \partial 4 d8 d |
@@ -126,8 +118,6 @@ nhacSoloBaSop = \relative c'' {
 }
 
 nhacSoloBaBass = \relative c'' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \key g \major
   \time 6/8
   \partial 4 b8 b |
@@ -144,8 +134,6 @@ nhacSoloBaBass = \relative c'' {
 }
 
 nhacSoloBon = \relative c'' {
-  \override Lyrics.LyricSpace.minimum-distance = #2.5
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   \tempo "Lento"
   \key bf \major
   \time 3/4
@@ -156,8 +144,8 @@ nhacSoloBon = \relative c'' {
   ef'4 d8 (c) bf (a) |
   d4. bf8 g4 |
   a bf4. g8 |
-  d'2. ( |
-  d4) r8 d ^\f b! g |
+  d'2. ~ |
+  d4 r8 d ^\f b! g |
   d4 r8 d'8 b! g |
   a2 r8 \bar "||"
   \once \override Score.RehearsalMark.font-size = #0.1
@@ -174,19 +162,19 @@ loiPhienKhucMot = \lyricmode {
 
 % Lời điệp khúc
 loiDiepKhucSop = \lyricmode {
-  \set stanza = #"Chorus:"
-  Al -- le -- lu -- ia! Lạy Nữ Vương thiên đàng, Mẹ ơi, vui lên!
-  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
-  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
-  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
-  Al -- le -- lu -- ia.
+  \set stanza = #"ĐK:"
+  "Al-" "le-" "lu-" ia! Lạy Nữ Vương thiên đàng, Mẹ ơi, vui lên!
+  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia,
+  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia,
+  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia,
+  "Al-" "le-" "lu-" ia.
 }
 
 loiDiepKhucBass = \lyricmode {
   Al -- le -- lu -- ia! Lạy Nữ Vương thiên đàng, Mẹ ơi, vui lên!
   Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
-  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
-  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
+  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, Al -- le -- lu -- ia,
+  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, Al -- le -- lu -- ia,
   Al -- le -- lu -- ia.
 }
 
@@ -221,6 +209,13 @@ loiPhienKhucBon = \lyricmode {
     >>
     \new Lyrics \lyricsto sopranos \loiPhienKhucMot
   >>
+  \layout {
+    %\override Lyrics.LyricText.font-series = #'bold
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #2.5
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
 
 \score {
@@ -234,7 +229,15 @@ loiPhienKhucBon = \lyricmode {
       \new Lyrics \lyricsto Bass \loiDiepKhucBass
     >>
   >>
+  \layout {
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #1
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
+
+\pageBreak
 
 \score {
   \new ChoirStaff <<
@@ -245,9 +248,13 @@ loiPhienKhucBon = \lyricmode {
     >>
     \new Lyrics \lyricsto sopranos \loiPhienKhucHai
   >>
+  \layout {
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #2.5
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
-
-\pageBreak
 
 \score {
   \new ChoirStaff <<
@@ -263,6 +270,12 @@ loiPhienKhucBon = \lyricmode {
       }
     >>
   >>
+  \layout {
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #2
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
 
 \score {
@@ -274,4 +287,10 @@ loiPhienKhucBon = \lyricmode {
     >>
     \new Lyrics \lyricsto sopranos \loiPhienKhucBon
   >>
+  \layout {
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #4
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
