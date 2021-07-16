@@ -1,50 +1,27 @@
 % Cài đặt chung
-\version "2.20.0"
+\version "2.22.1"
 \include "english.ly"
 
 \header {
-  title = "Rảy Nước Thánh"
+  title = \markup { \fontsize #3 "Rảy Nước Thánh" }
   composer = " "
   arranger = " "
   tagline = ##f
 }
 
-global = {
-  \key c \major
-  \time 2/4
-}
-
-\paper {
-  #(set-paper-size "a4")
-  top-margin = 20\mm
-  bottom-margin = 15\mm
-  left-margin = 20\mm
-  right-margin = 20\mm
-  indent = #0
-  #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
-			       (/ 20 20)))
-}
-
-inNghieng = { \override LyricText.font-shape = #'italic }
-
 % Nhạc điệp khúc
 nhacDiepKhucSop = \relative c' {
-  \override Lyrics.LyricSpace.minimum-distance = #3.0
-  \override Score.BarNumber.break-visibility = ##(#f #f #f)
   e4. g8 |
   g4 e8 _(g) |
   a2 |
   g8 c a f |
   f _(d) e4 |
   e4. e8 |
-  e _(d) c _(d) |
+  e (d) c (d) |
   g2 |
   g8 c a c |
   g4 e8 g |
-  a4 \tuplet 3/2 { g8 _(a g) } |
+  a4 \tuplet 3/2 { g8 \tweak extra-offset #'(0 . 0.8) _(a g) } |
   e4 c8 c |
   f4 g |
   e2 |
@@ -56,7 +33,7 @@ nhacDiepKhucSop = \relative c' {
   c2 \bar "|."
 }
 
-nhacDiepKhucBass = \relative c' {
+nhacDiepKhucBas = \relative c' {
   c4. e8 |
   e4 c8 ^(e) |
   f2 |
@@ -86,24 +63,66 @@ loiDiepKhuc = \lyricmode {
   Và tất cả những người được nước ấy thanh tẩy
   đều được ơn cứu độ
   và cất tiếng reo mừng:
-  Hal -- le -- lu -- ia, Hal -- le -- lu -- ia.
+  "Hal -" "le -" "lu -" ia, "Hal -" "le -" "lu -" ia.
 }
 
 % Dàn trang
+% Thiết lập tông và nhịp
+TongNhip = { \key c \major \time 2/4 }
+
+\paper {
+  #(set-paper-size "a4")
+  top-margin = 20\mm
+  bottom-margin = 20\mm
+  left-margin = 20\mm
+  right-margin = 20\mm
+  indent = #0
+  #(define fonts
+	 (make-pango-font-tree "Liberation Serif"
+	 		       "Liberation Serif"
+			       "Liberation Serif"
+			       (/ 20 20)))
+}
+% Đổi kích thước nốt cho bè phụ
+notBePhu =
+#(define-music-function (font-size music) (number? ly:music?)
+   (for-some-music
+     (lambda (m)
+       (if (music-is-of-type? m 'rhythmic-event)
+           (begin
+             (set! (ly:music-property m 'tweaks)
+                   (cons `(font-size . ,font-size)
+                         (ly:music-property m 'tweaks)))
+             #t)
+           #f))
+     music)
+   music)
+
 \score {
   \new ChoirStaff <<
-    \new Staff = chorus \with {
+    \new Staff = diepKhuc \with {
         \consists "Merge_rests_engraver"
+        printPartCombineTexts = ##f
       }
       <<
-      \new Voice = "sopranos" {
-        \voiceOne \global \stemUp \nhacDiepKhucSop
-      }
-      \new Voice = "basses" {
-        \voiceTwo \global \stemDown \nhacDiepKhucBass
-      }
-    >>
-    \new Lyrics = basses
-    \context Lyrics = basses \lyricsto sopranos \loiDiepKhuc
+      \new Voice \TongNhip \partCombine 
+        \nhacDiepKhucSop
+        \notBePhu -2 { \nhacDiepKhucBas }
+      \new NullVoice = nhacThamChieu \nhacDiepKhucSop
+      \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1.2
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1.2
+        }
+        \lyricsto nhacThamChieu \loiDiepKhuc
+      >>
   >>
+  \layout {
+    \override Lyrics.LyricText.font-series = #'bold
+    \override Lyrics.LyricText.font-size = #+2
+    \override Lyrics.LyricSpace.minimum-distance = #3.5
+    \override Score.BarNumber.break-visibility = ##(#f #f #f)
+    \override Score.SpacingSpanner.uniform-stretching = ##t
+  }
 }
