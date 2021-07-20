@@ -347,7 +347,12 @@ loiBas = \lyrics {
                              (padding . 1))
 }
 
-TongNhip = { \key d \major \time 4/4 \tempo "Allegro" }
+TongNhip = {
+  \key d \major \time 4/4 \tempo "Allegro"
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Timing.beatStructure = #'(1 1 1 1)
+}
 
 \score {
   \new ChoirStaff <<

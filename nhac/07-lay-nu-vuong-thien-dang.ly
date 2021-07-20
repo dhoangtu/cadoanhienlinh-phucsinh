@@ -15,6 +15,9 @@
 global = {
   \key g \major
   \time 4/4
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Timing.beatStructure = #'(1 1 1 1)
 }
 
 \paper {
@@ -137,6 +140,9 @@ nhacSoloBon = \relative c'' {
   \tempo "Lento"
   \key bf \major
   \time 3/4
+  \set Timing.beamExceptions = #'()
+  \set Timing.baseMoment = #(ly:make-moment 1/4)
+  \set Timing.beatStructure = #'(1 1 1)
   d4 bf g |
   d'4. c8 a4 \breathe |
   g a bf |
