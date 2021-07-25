@@ -55,14 +55,20 @@ loiSop = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah.
-  Ngài là Thiên Chúa quyền phép thống trị muôn loài
+  Ngài là Thiên Chúa quyền phép thống trị
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
+  muôn loài
   "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
-  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  "Hal·" "le·" "lu·"
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
+  jah, "Hal·" "le·" "lu·" jah,
   "Hal -" "le -" "lu -" jah, Hal· le· lu· jah,
   "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
   "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
   Hal· le· lu· jah, Hal· le· lu· jah,
   Hal· le -- lu -- jah, Hal -- le -- lu -- jah.
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
   Chúa cả hiển vinh muôn đời.
   Chúa oai quyền, Chúa oai quyền cả trời đất là của Chúa Trời
   của Chúa Ki -- tô
@@ -128,13 +134,20 @@ loiAlto = \lyrics {
   Ngài là Thiên Chúa quyền phép thống trị muôn loài.
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
+  "Hal·" "le·"
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
+  "lu·" jah, "Hal·" "le·" "lu·" jah,
   "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
-  "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
-  "Hal -" "le -" "lu -" jah, Hal· le· lu· jah,
+  "Hal -" "le -" "lu -"
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
+  jah, Hal· le· lu· jah,
   Hal -- le -- lu -- jah, Hal· le· lu· jah,
   "Hal·" "le·" "lu·" jah.
-  Ngài là Thiên Chúa quyền phép thống trị muôn loài.
+  Ngài là Thiên
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
+  Chúa quyền phép thống trị muôn loài.
   Hal· le· lu· jah, Hal -- le -- lu -- jah.
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
   Chúa cả hiền vinh muôn đời.
   Chúa oai quyền
   Chúa oai quyền cả trời đất là của Chúa Trời của chúa Ki -- tô.
@@ -202,13 +215,20 @@ loiTeno = \lyrics {
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
-  "Hal -" "le -" "lu -" jah, "Hal·" "le·" "lu·" jah,
+  "Hal -" "le -" "lu -" jah, "Hal·"
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
+  "le·" "lu·" jah,
   "Hal·" "le·" "lu·" jah.
-  Ngài là Thiên Chúa quyền phép thống trị muôn loài
+  Ngài là Thiên
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
+  Chúa quyền phép thống trị muôn loài
   Hal· le· lu· jah, "Hal·" "le·" "lu·" jah,
   "Hal·" "le·" "lu·" jah.
-  Ngài là Thiên Chúa quyền phép thống trị muôn loài
+  Ngài là Thiên
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
+  Chúa quyền phép thống trị muôn loài
   Hal· le -- lu -- jah.
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
   Chúa cả hiền vinh muôn đời
   Chúa oai quyền Chúa oai quyền cả trời đất là của Chúa Trời
   của Chúa Ki -- tô
@@ -279,12 +299,18 @@ loiBas = \lyrics {
   Ngài là Thiên Chúa quyền phép thống trị muôn loài
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
   "Hal -" "le -" "lu -" jah, "Hal -" "le -" "lu -" jah,
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
   "Hal·" "le·" "lu·" jah.
-  Ngài là Thiên Chúa quyền phép thống trị muôn loài
+  Ngài là Thiên
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
+  Chúa quyền phép thống trị muôn loài
   "Hal·" "le·" "lu·" jah, "Hal·" "le·" "lu·" jah,
-  "Hal·" "le·" "lu·" jah, "Hal·" "le·" lu -- jah,
+  "Hal·" "le·" "lu·" jah, "Hal·" "le·"
+  \override Lyrics.LyricSpace.minimum-distance = #0.4
+  lu -- jah,
   Hal· le· lu· jah, Hal· le· lu· jah,
   Hal· le· lu· jah, Hal· le· lu· jah,
+  \override Lyrics.LyricSpace.minimum-distance = #0.7
   "Hal·" "le·" "lu·" jah.
   Chúa cả hiển vinh muôn đời
   Chúa oai quyền
@@ -333,9 +359,9 @@ loiBas = \lyrics {
   right-margin = 17\mm
   indent = #0
   #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
+	 (make-pango-font-tree "DejaVu Serif Condensed"
+	 		       "DejaVu Serif Condensed"
+			       "DejaVu Serif Condensed"
 			       (/ 20 20)))
   print-page-number = ##f
   systems-per-page = #3
@@ -374,8 +400,8 @@ TongNhip = {
     >>
   >>
   \layout {
-    \override Lyrics.LyricText.font-size = #+1.5
-    \override Lyrics.LyricSpace.minimum-distance = #0.5
+    %\override Lyrics.LyricText.font-size = #+1.5
+    \override Lyrics.LyricSpace.minimum-distance = #0.7
     \override Score.BarNumber.break-visibility = ##(#f #f #t)
     \override Score.SpacingSpanner.uniform-stretching = ##t
   } 
