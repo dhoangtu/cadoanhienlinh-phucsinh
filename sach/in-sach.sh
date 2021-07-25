@@ -50,7 +50,7 @@ pdftk "${filelist[@]}" cat output nhac.pdf
 pdflatex so-trang-chan-le.tex
 
 # thêm lời mở đầu
-pdftk so-trang-chan-le.pdf blank-a4.pdf cat output sach-nhac.pdf
+pdftk so-trang-chan-le.pdf blank-a4.pdf bia-sau-trong.pdf cat output sach-nhac.pdf
 
 # chỉnh lệch trang chẵn lẻ
 pdfjam --twoside --paper a4paper --offset '0.3cm 0cm' sach-nhac.pdf --outfile in-lech-trang.pdf
