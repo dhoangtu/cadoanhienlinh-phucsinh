@@ -1,6 +1,6 @@
 
 
-@ECHO OFF
+@ECHO ON
 rem setlocal enabledelayedexpansion
 
 set LILYPOND="C:\Program Files (x86)\LilyPond-2.22.1\usr\bin\lilypond.exe"
@@ -20,4 +20,7 @@ pdftk %GEN%\*.pdf cat output nhac.pdf
 
 pdflatex so-trang-chan-le.tex
 
-del /s /f /q %GEN% nhac.pdf *.aux *.log
+pdftk bia-truoc.pdf blank-a4.pdf so-trang-chan-le.pdf blank-a4.pdf bia-sau-trong.pdf cat output phucsinh-win.pdf
+
+del /s /f /q %GEN% nhac.pdf *.aux *.log so-trang-chan-le.pdf nhac.pdf
+rmdir /s/q %GEN%

@@ -276,13 +276,13 @@ TongNhip = { \key c \major }
   \layout {
     \override Staff.TimeSignature.transparent = ##t
     %\override Lyrics.LyricText.font-size = #+2
-    \override Lyrics.LyricSpace.minimum-distance = #3
+    \override Lyrics.LyricSpace.minimum-distance = #2
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
     %\override Score.SpacingSpanner packed-spacing = ##t
     \set Score.defaultBarType = ""
     \set Score.barAlways = ##t
-    line-width = 100
+    line-width = 120
     ragged-right = ##f
     ragged-last = ##f
     indent = 0
