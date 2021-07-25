@@ -7,8 +7,8 @@
   subtitle = "(Kinh Regina Coeli)"
   %subsubtitle = " "
   %arranger = " "
-  poet = "Nhạc: Labat (Cantique de la Jeunesse, Paris, 1912)"
-  composer = "Lời Việt: Khổng Vĩnh Thành"
+  arranger = "Lời Việt: Khổng Vĩnh Thành"
+  composer = "Nhạc: Labat (Cantique de la Jeunesse, Paris, 1912)"
   tagline = ##f
 }
 
@@ -28,9 +28,9 @@ global = {
   right-margin = 20\mm
   indent = #0
   #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
+	 (make-pango-font-tree "DejaVu Serif"
+	 		       "DejaVu Serif"
+			       "DejaVu Serif"
 			       (/ 20 20)))
   print-page-number = ##f
   page-count = #2
@@ -217,7 +217,7 @@ loiPhienKhucBon = \lyricmode {
   >>
   \layout {
     %\override Lyrics.LyricText.font-series = #'bold
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+2
     \override Lyrics.LyricSpace.minimum-distance = #2.5
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
@@ -236,7 +236,7 @@ loiPhienKhucBon = \lyricmode {
     >>
   >>
   \layout {
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+2
     \override Lyrics.LyricSpace.minimum-distance = #1
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
@@ -252,10 +252,16 @@ loiPhienKhucBon = \lyricmode {
         \global \stemNeutral \nhacSoloHai
       }
     >>
-    \new Lyrics \lyricsto sopranos \loiPhienKhucHai
+    \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1.5
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1
+        }
+        \lyricsto sopranos \loiPhienKhucHai
   >>
   \layout {
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+2
     \override Lyrics.LyricSpace.minimum-distance = #2.5
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
@@ -277,7 +283,7 @@ loiPhienKhucBon = \lyricmode {
     >>
   >>
   \layout {
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+2
     \override Lyrics.LyricSpace.minimum-distance = #2
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
@@ -291,10 +297,16 @@ loiPhienKhucBon = \lyricmode {
         \stemNeutral \nhacSoloBon
       }
     >>
-    \new Lyrics \lyricsto sopranos \loiPhienKhucBon
+    \new Lyrics \with {
+          \override VerticalAxisGroup.
+            nonstaff-relatedstaff-spacing.padding = #1.5
+          \override VerticalAxisGroup.
+            nonstaff-unrelatedstaff-spacing.padding = #1.2
+        }
+        \lyricsto sopranos \loiPhienKhucBon
   >>
   \layout {
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+2
     \override Lyrics.LyricSpace.minimum-distance = #4
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t

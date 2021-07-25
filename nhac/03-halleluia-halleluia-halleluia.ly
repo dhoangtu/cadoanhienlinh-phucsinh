@@ -9,25 +9,6 @@
   tagline = ##f
 }
 
-global = {
-  \key c \major
-  \time 2/4
-}
-
-\paper {
-  #(set-paper-size "a4")
-  top-margin = 20\mm
-  bottom-margin = 15\mm
-  left-margin = 20\mm
-  right-margin = 20\mm
-  indent = #0
-  #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
-			       (/ 20 20)))
-}
-
 % Nhạc điệp khúc
 nhacDiepKhuc = \relative c' {
   \partial 8 c8 |
@@ -93,6 +74,25 @@ loiDiepKhuc = \lyricmode {
 }
 
 % Dàn trang
+global = {
+  \key c \major
+  \time 2/4
+}
+
+\paper {
+  #(set-paper-size "a4")
+  top-margin = 20\mm
+  bottom-margin = 15\mm
+  left-margin = 20\mm
+  right-margin = 20\mm
+  indent = #0
+  #(define fonts
+	 (make-pango-font-tree "DejaVu Serif"
+	 		       "DejaVu Serif"
+			       "DejaVu Serif"
+			       (/ 20 20)))
+}
+
 \score {
   \new ChoirStaff <<
     \new Staff <<
@@ -110,7 +110,7 @@ loiDiepKhuc = \lyricmode {
   >>
   \layout {
     \override Lyrics.LyricText.font-series = #'bold
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+1
     \override Lyrics.LyricSpace.minimum-distance = #3.0
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t

@@ -78,9 +78,9 @@ TongNhip = { \key c \major \time 2/4 }
   right-margin = 20\mm
   indent = #0
   #(define fonts
-	 (make-pango-font-tree "Liberation Serif"
-	 		       "Liberation Serif"
-			       "Liberation Serif"
+	 (make-pango-font-tree "DejaVu Serif"
+	 		       "DejaVu Serif"
+			       "DejaVu Serif"
 			       (/ 20 20)))
 }
 % Đổi kích thước nốt cho bè phụ
@@ -107,7 +107,7 @@ notBePhu =
       <<
       \new Voice \TongNhip \partCombine 
         \nhacDiepKhucSop
-        \notBePhu -2 { \nhacDiepKhucBas }
+        \notBePhu -3 { \nhacDiepKhucBas }
       \new NullVoice = nhacThamChieu \nhacDiepKhucSop
       \new Lyrics \with {
           \override VerticalAxisGroup.
@@ -120,7 +120,7 @@ notBePhu =
   >>
   \layout {
     \override Lyrics.LyricText.font-series = #'bold
-    \override Lyrics.LyricText.font-size = #+2
+    %\override Lyrics.LyricText.font-size = #+2
     \override Lyrics.LyricSpace.minimum-distance = #3.5
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
