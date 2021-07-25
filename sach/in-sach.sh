@@ -32,7 +32,7 @@ do
     ${lilypondcmd} --output="${GEN}/${shortname}" -dno-point-and-click --pdf "$fullname"
     
     # đếm số trang
-    echo "${title};${pagecounter}" >> ${CONTENT}
+    #echo "${title};${pagecounter}" >> ${CONTENT}
     # bắt đầu trang kế tiếp
     pageno=`pdfinfo "${GEN}/${shortname}.pdf" | grep "Pages" | grep -Eo '[0-9]+'`
     echo "${title} : ${pageno} pages"
