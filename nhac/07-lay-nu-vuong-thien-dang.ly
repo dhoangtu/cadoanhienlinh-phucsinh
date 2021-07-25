@@ -28,9 +28,9 @@ global = {
   right-margin = 20\mm
   indent = #0
   #(define fonts
-	 (make-pango-font-tree "DejaVu Serif"
-	 		       "DejaVu Serif"
-			       "DejaVu Serif"
+	 (make-pango-font-tree "DejaVu Serif Condensed"
+	 		       "DejaVu Serif Condensed"
+			       "DejaVu Serif Condensed"
 			       (/ 20 20)))
   print-page-number = ##f
   page-count = #2

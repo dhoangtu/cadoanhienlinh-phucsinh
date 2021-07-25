@@ -113,9 +113,9 @@ loiPhienKhucBon = \lyricmode {
   right-margin = 20\mm
   indent = #0
   #(define fonts
-	 (make-pango-font-tree "DejaVu Serif"
-	 		       "DejaVu Serif"
-			       "DejaVu Serif"
+	 (make-pango-font-tree "DejaVu Serif Condensed"
+	 		       "DejaVu Serif Condensed"
+			       "DejaVu Serif Condensed"
 			       (/ 20 20)))
   system-system-spacing = #'((basic-distance . 15)
                              (minimum-distance . 15)
@@ -174,7 +174,7 @@ inNghieng = { \override LyricText.font-shape = #'italic }
   >>
   \layout {
     %\override Lyrics.LyricText.font-size = #+2
-    \override Lyrics.LyricSpace.minimum-distance = #1
+    \override Lyrics.LyricSpace.minimum-distance = #2
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
   }

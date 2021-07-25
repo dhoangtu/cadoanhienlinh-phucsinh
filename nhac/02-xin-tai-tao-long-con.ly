@@ -134,9 +134,9 @@ loiPhienKhucBa = \lyricmode {
   indent = #0
   #(define fonts
     (make-pango-font-tree
-      "DejaVu Serif"
-      "DejaVu Serif"
-      "DejaVu Serif"
+      "DejaVu Serif Condensed"
+      "DejaVu Serif Condensed"
+      "DejaVu Serif Condensed"
       (/ 20 20)))
   page-count = #1
   system-system-spacing = #'((basic-distance . 11)
