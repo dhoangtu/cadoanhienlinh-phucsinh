@@ -22,5 +22,5 @@ pdflatex so-trang-chan-le.tex
 
 pdftk bia-truoc.pdf blank-a4.pdf so-trang-chan-le.pdf blank-a4.pdf bia-sau-trong.pdf cat output phucsinh-win.pdf
 
-del /s /f /q %GEN% nhac.pdf *.aux *.log so-trang-chan-le.pdf nhac.pdf
+del /s /f /q %GEN% nhac.pdf *.aux *.log so-trang-chan-le.pdf
 rmdir /s/q %GEN%
