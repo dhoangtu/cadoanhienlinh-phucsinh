@@ -5,8 +5,6 @@
 \header {
   title = \markup { \fontsize #3 "Lạy Nữ Vương Thiên Đàng" }
   subtitle = "(Kinh Regina Coeli)"
-  %subsubtitle = " "
-  %arranger = " "
   arranger = "Lời Việt: Khổng Vĩnh Thành"
   composer = "Nhạc: Labat (Cantique de la Jeunesse, Paris, 1912)"
   tagline = ##f
@@ -169,18 +167,18 @@ loiPhienKhucMot = \lyricmode {
 % Lời điệp khúc
 loiDiepKhucSop = \lyricmode {
   \set stanza = #"ĐK:"
-  "Al-" "le-" "lu-" ia! Lạy Nữ Vương thiên đàng, Mẹ ơi, vui lên!
-  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia,
-  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia,
-  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia,
-  "Al-" "le-" "lu-" ia.
+  Al -- le -- lu -- ia! Lạy Nữ Vương thiên đàng, Mẹ ơi, vui lên!
+  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
+  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
+  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
+  Al -- le -- lu -- ia.
 }
 
 loiDiepKhucBass = \lyricmode {
   Al -- le -- lu -- ia! Lạy Nữ Vương thiên đàng, Mẹ ơi, vui lên!
   Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
-  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, Al -- le -- lu -- ia,
-  "Al-" "le-" "lu-" ia, "Al-" "le-" "lu-" ia, Al -- le -- lu -- ia,
+  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
+  Al -- le -- lu -- ia, Al -- le -- lu -- ia, Al -- le -- lu -- ia,
   Al -- le -- lu -- ia.
 }
 
@@ -221,6 +219,7 @@ loiPhienKhucBon = \lyricmode {
     \override Lyrics.LyricSpace.minimum-distance = #2.5
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
+    \override LyricHyphen.minimum-distance = #2.5
   }
 }
 
@@ -240,6 +239,7 @@ loiPhienKhucBon = \lyricmode {
     \override Lyrics.LyricSpace.minimum-distance = #1
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
+    \override LyricHyphen.minimum-distance = #2.5
   }
 }
 
@@ -265,6 +265,7 @@ loiPhienKhucBon = \lyricmode {
     \override Lyrics.LyricSpace.minimum-distance = #2.5
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
+    \override LyricHyphen.minimum-distance = #2.5
   }
 }
 
@@ -287,6 +288,7 @@ loiPhienKhucBon = \lyricmode {
     \override Lyrics.LyricSpace.minimum-distance = #2
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
+    \override LyricHyphen.minimum-distance = #2.5
   }
 }
 
@@ -310,5 +312,6 @@ loiPhienKhucBon = \lyricmode {
     \override Lyrics.LyricSpace.minimum-distance = #4
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
+    \override LyricHyphen.minimum-distance = #2.5
   }
 }

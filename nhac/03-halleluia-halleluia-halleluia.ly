@@ -11,6 +11,7 @@
 
 % Nhạc điệp khúc
 nhacDiepKhuc = \relative c' {
+  <>^\markup { \halign #35 " " }
   \partial 8 c8 |
   ef4 _(\tuplet 3/2 { f8 [g ef] } |
   ef4 f8 [ef]) |
@@ -61,16 +62,16 @@ nhacDiepKhuc = \relative c' {
 
 % Lời điệp khúc
 loiDiepKhuc = \lyricmode {
-  "Hal -" "le -" "lu -" ia,
-  "Hal -" "le -" "lu -" ia,
-  "Hal -" "le -" "lu -" ia.
+  Hal -- le -- lu -- ia,
+  Hal -- le -- lu -- ia,
+  Hal -- le -- lu -- ia.
   Viên đá người thợ xây loại bỏ,
   lại trở nên đá tảng góc tường.
   Ấy là Chúa đã làm nên như vậy
   trước mắt chúng ta thật lạ lùng.
-  "Hal -" "le -" "lu -" ia,
-  "Hal -" "le -" "lu -" ia,
-  "Hal -" "le -" "lu -" ia.
+  Hal -- le -- lu -- ia,
+  Hal -- le -- lu -- ia,
+  Hal -- le -- lu -- ia.
 }
 
 % Dàn trang
@@ -109,11 +110,12 @@ global = {
         \lyricsto sopranos \loiDiepKhuc
   >>
   \layout {
-    \override Lyrics.LyricText.font-series = #'bold
+    %\override Lyrics.LyricText.font-series = #'bold
     %\override Lyrics.LyricText.font-size = #+1
-    \override Lyrics.LyricSpace.minimum-distance = #3.0
+    \override Lyrics.LyricSpace.minimum-distance = #3
     \override Score.BarNumber.break-visibility = ##(#f #f #f)
     \override Score.SpacingSpanner.uniform-stretching = ##t
+    \override LyricHyphen.minimum-distance = #4
     \set Score.barAlways = ##t
     \set Score.defaultBarType = ""
   }
